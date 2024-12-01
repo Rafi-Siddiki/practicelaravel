@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class Employee
 {
     /**
      * Handle an incoming request.
@@ -19,9 +19,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {   
-        if (auth()->user()->role !== 'admin') {
-            if (auth()->user()->role === 'employee') {
-                return redirect('employee/dashboard');
+        if (auth()->user()->role !== 'employee') {
+            if (auth()->user()->role === 'admin') {
+                return redirect('admin/dashboard');
             } else {
                 return redirect('customer/dashboard');
             }
